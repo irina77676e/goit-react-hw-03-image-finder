@@ -1,4 +1,3 @@
-import React from 'react';
 import { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +7,9 @@ import ImageGallery from './ImageGallery/ImageGallery';
 export default class App extends Component {
   state = {
     page: 1,
-    status: 'pending',
+    status: 'idle',
+    query: [],
+    error: null,
   };
 
   handleSubmitInput = newQuery => {
@@ -18,38 +19,48 @@ export default class App extends Component {
     this.setState({ name: newQuery, page: 1, status: 'pending' });
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const prevImg = prevProps.
-  // }
   render() {
-    return (
-      <div>
-        <Searchbar onSubmit={this.handleSubmitInput}>
+    const { query, showModal, modalImg, modalAlt, error, status, btnActivate } =
+      this.state;
+
+    if (status === 'idle') {
+      return (
+        <div>
+          <Searchbar onSubmit={this.handleSubmitInput} />
           <ImageGallery query={this.state.query} />
-          <button type="submit">
-            <span class="material-icons">search</span>
-          </button>
-        </Searchbar>
-        <ToastContainer
-          position="top-right"
-          autoClose={1500}
-          limit={1}
-          hideProgressBar
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-        <div class="gallery-container">
-          <div class="gallery"></div>
-          <button type="button" class="btn-load-more is-hidden">
-            Load more
-          </button>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={1500}
+            limit={1}
+            hideProgressBar
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
-      </div>
-    );
+      );
+    }
+    if (status === 'pending') {
+      return (
+        <div>
+          <Searchbar onSubmit={this.handleSubmitInput} />
+        </div>
+      );
+    }
+
+    if (status === 'rejected') {
+      return <h1>{error.message}</h1>;
+    }
+
+    // if (status === 'resolved') {
+    //   return (
+
+    //   )
+    // }
   }
 }
