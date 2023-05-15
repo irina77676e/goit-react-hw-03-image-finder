@@ -6,6 +6,7 @@ import {
   SearchFormButton,
   SearchFormInput,
 } from './Searchbar.styled';
+import { ImSphere } from 'react-icons/im';
 
 export default class Searchbar extends Component {
   state = {
@@ -30,13 +31,14 @@ export default class Searchbar extends Component {
     return (
       <Header>
         <SearchForm onSubmit={this.handleSubmit}>
-          <SearchFormButton type="submit"></SearchFormButton>
+          <SearchFormButton type="submit">
+            <ImSphere />
+          </SearchFormButton>
 
           <SearchFormInput
-            class="input"
             type="text"
             autocomplete="off"
-            autofocus
+            autoFocus
             placeholder="Search images and photos"
             onChange={this.handleInputChange}
             value={this.state.value}

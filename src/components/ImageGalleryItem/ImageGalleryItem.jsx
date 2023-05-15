@@ -1,5 +1,5 @@
-import React from 'react';
 import { Gallery, Img } from './ImageGalleryItem.styled';
+import PropTypes from 'prop-types';
 
 export default function ImageGalleryItem({ src, tags, dataSrc, onClick }) {
   return (
