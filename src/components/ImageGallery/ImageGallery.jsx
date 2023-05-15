@@ -1,21 +1,23 @@
 import PropTypes from 'prop-types';
-import { Ul } from './ImageGallery.styled';
+import { Ul, Section } from './ImageGallery.styled';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 function ImageGallery({ query, onClickImg }) {
   return (
-    <Ul>
-      {query.map(({ id, webformatURL, largeImageURL, tags }) => {
-        return (
-          <ImageGalleryItem
-            key={id}
-            src={webformatURL}
-            tags={tags}
-            dataSrc={largeImageURL}
-            onClick={onClickImg}
-          />
-        );
-      })}
-    </Ul>
+    <Section>
+      <Ul>
+        {query.map(({ id, webformatURL, largeImageURL, tags }) => {
+          return (
+            <ImageGalleryItem
+              key={id}
+              src={webformatURL}
+              tags={tags}
+              dataSrc={largeImageURL}
+              onClick={onClickImg}
+            />
+          );
+        })}
+      </Ul>
+    </Section>
   );
 }
 

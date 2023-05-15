@@ -12,3 +12,7 @@ export const Ul = styled.ul`
   margin-left: auto;
   margin-right: auto;
 `;
+
+export const Section = styled.section`
+  padding: 20px;
+`;

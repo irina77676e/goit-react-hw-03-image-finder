@@ -24,3 +24,6 @@ export const Button = styled.button`
     :focus {
         background-color: #303f9f;
 `;
+export const Div = styled.div`
+  text-align: center;
+`;

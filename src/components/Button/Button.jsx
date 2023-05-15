@@ -1,11 +1,11 @@
-import { Button } from './Button.styled';
+import { Button, Div } from './Button.styled';
 
 const ButtonLoad = ({ handleClickBtn }) => (
-  <div>
+  <Div>
     <Button type="button" onClick={handleClickBtn}>
       Load more
     </Button>
-  </div>
+  </Div>
 );
 
 export default ButtonLoad;
